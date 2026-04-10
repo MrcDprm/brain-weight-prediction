@@ -39,7 +39,6 @@ Projeyi kendi bilgisayarınızda (localhost) çalıştırmak için Python 3.x y�
 **1. Repoyu Klonlayın ve Klasöre Girin**
 ```bash
 git clone https://github.com/MrcDprm/baby-brain-weight-prediction.git
-cd uygulamalar
 ```
 
 **2. Gerekli Kütüphaneleri (Bağımlılıkları) Yükleyin**
