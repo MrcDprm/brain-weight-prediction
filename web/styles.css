@@ -626,3 +626,9 @@ h1 {
     padding-top: 0.15rem;
   }
 }
+
+/* Dil değiştirici bir bağlantı: düğme görünümünde */
+.site-nav .text-button {
+  color: var(--ink);
+  text-decoration: none;
+}

@@ -1,4 +1,4 @@
-// Tema ve dil tercihi tarayıcıda saklanır; depolama kapalıysa varsayılanlar kullanılır.
+// Tema tercihi tarayıcıda saklanır; depolama kapalıysa varsayılanlar kullanılır.
 const KEY = "brain-settings";
 
 export function readSettings() {

@@ -55,8 +55,7 @@ function render(model, chart) {
 }
 
 async function main() {
-  let onLangChange = () => {};
-  initPage(() => onLangChange());
+  initPage();
 
   let model, data, metrics;
   try {
@@ -77,11 +76,6 @@ async function main() {
   fillModelTexts(model, metrics);
   refresh();
   $("head-size").addEventListener("input", refresh);
-  onLangChange = () => {
-    fillModelTexts(model, metrics);
-    chart.relabel();
-    refresh();
-  };
 }
 
 main();
