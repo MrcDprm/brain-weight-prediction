@@ -17,7 +17,7 @@ A brain weight calculator: enter a head size in cm³ and get the predicted adult
 - Chart on graph paper: the 237 people in the data, the regression line, the interval band and your value, with the interval drawn as a bracket on the axis
 - A warning when the head size is outside the range of the data (2,720–4,747 cm³), and clear messages for invalid input ("3.600" and "3,600" are read as thousands)
 - Model page: comparison table, why the model was chosen, residual plot and a model card (intended use, data, method, limits)
-- Turkish and English on their own addresses (`/` and `/en/`), light and dark theme, works on phones and with the keyboard
+- Turkish and English on their own addresses (`/` and `/en`), light and dark theme, works on phones and with the keyboard
 - No server: predictions run in the browser from `model.json`, nothing is sent or stored
 
 **Training pipeline**
@@ -103,7 +103,7 @@ Run the tests and the website:
 ```bash
 python -m pytest
 npm test
-python -m http.server 8000 -d web   # then open http://localhost:8000
+npx serve web                      # then open the address it prints
 ```
 
 The HTML pages, `sitemap.xml` and `robots.txt` are generated from `web/pages/` and `web/src/messages.js` in both languages. After changing a text, run `npm run build:pages`; a test fails if the pages are out of date.

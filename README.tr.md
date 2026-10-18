@@ -17,7 +17,7 @@ Bir beyin ağırlığı hesaplayıcısı: baş hacmini cm³ olarak yaz, tahmini 
 - Milimetrik kâğıt üzerinde grafik: verideki 237 kişi, regresyon doğrusu, aralık bandı ve senin değerin; aralık eksende bir ayraç olarak çizilir
 - Baş hacmi verideki aralığın (2.720–4.747 cm³) dışındaysa uyarı, hatalı girdide açık mesajlar ("3.600" ve "3,600" binlik olarak okunur)
 - Model sayfası: karşılaştırma tablosu, modelin neden seçildiği, artık grafiği ve model kartı (kullanım amacı, veri, yöntem, sınırlar)
-- Kendi adreslerinde Türkçe ve İngilizce (`/` ve `/en/`), açık ve koyu tema, telefonda ve klavyeyle çalışır
+- Kendi adreslerinde Türkçe ve İngilizce (`/` ve `/en`), açık ve koyu tema, telefonda ve klavyeyle çalışır
 - Sunucu yok: tahmin `model.json` ile tarayıcıda yapılır, hiçbir şey gönderilmez ya da saklanmaz
 
 **Eğitim hattı**
@@ -103,7 +103,7 @@ Testleri ve web sitesini çalıştır:
 ```bash
 python -m pytest
 npm test
-python -m http.server 8000 -d web   # sonra http://localhost:8000 adresini aç
+npx serve web                      # sonra yazdığı adresi aç
 ```
 
 HTML sayfaları, `sitemap.xml` ve `robots.txt` iki dilde `web/pages/` ve `web/src/messages.js` dosyalarından üretilir. Bir metni değiştirince `npm run build:pages` çalıştır; sayfalar güncel değilse bir test başarısız olur.

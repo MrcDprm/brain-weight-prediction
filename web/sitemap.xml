@@ -3,25 +3,25 @@
   <url>
     <loc>https://brain.miracdeprem.com/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://brain.miracdeprem.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://brain.miracdeprem.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brain.miracdeprem.com/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://brain.miracdeprem.com/"/>
   </url>
   <url>
-    <loc>https://brain.miracdeprem.com/en/</loc>
+    <loc>https://brain.miracdeprem.com/en</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://brain.miracdeprem.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://brain.miracdeprem.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brain.miracdeprem.com/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://brain.miracdeprem.com/"/>
   </url>
   <url>
-    <loc>https://brain.miracdeprem.com/model.html</loc>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://brain.miracdeprem.com/model.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://brain.miracdeprem.com/en/model.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://brain.miracdeprem.com/model.html"/>
+    <loc>https://brain.miracdeprem.com/model</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://brain.miracdeprem.com/model"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brain.miracdeprem.com/en/model"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brain.miracdeprem.com/model"/>
   </url>
   <url>
-    <loc>https://brain.miracdeprem.com/en/model.html</loc>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://brain.miracdeprem.com/model.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://brain.miracdeprem.com/en/model.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://brain.miracdeprem.com/model.html"/>
+    <loc>https://brain.miracdeprem.com/en/model</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://brain.miracdeprem.com/model"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brain.miracdeprem.com/en/model"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brain.miracdeprem.com/model"/>
   </url>
 </urlset>
