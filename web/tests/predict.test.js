@@ -38,10 +38,18 @@ test("parses valid input with dot or comma decimals", () => {
   assert.deepEqual(parseHeadSize("3600.5"), { value: 3600.5 });
 });
 
+test("reads three-digit groups as thousands separators", () => {
+  assert.deepEqual(parseHeadSize("3.600"), { value: 3600 });
+  assert.deepEqual(parseHeadSize("3,600"), { value: 3600 });
+  assert.deepEqual(parseHeadSize("3.600.000"), { error: "tooLarge" });
+  // Ondalık okuma zaten geçerliyse ayıraç ondalık kalır
+  assert.deepEqual(parseHeadSize("3600.500"), { value: 3600.5 });
+});
+
 test("rejects invalid input", () => {
   assert.deepEqual(parseHeadSize(""), { error: "empty" });
   assert.deepEqual(parseHeadSize(null), { error: "empty" });
-  for (const text of ["abc", "-3600", "3e3", "3.600.000", "36 00", "Infinity"]) {
+  for (const text of ["abc", "-3600", "3e3", "3.6.0", "36 00", "Infinity", "٣٦٠٠"]) {
     assert.deepEqual(parseHeadSize(text), { error: "notNumber" }, text);
   }
   assert.deepEqual(parseHeadSize("999"), { error: "tooSmall" });

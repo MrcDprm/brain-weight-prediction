@@ -39,9 +39,17 @@ export function predict(model, row) {
 export function parseHeadSize(text) {
   const trimmed = String(text ?? "").trim();
   if (trimmed === "") return { error: "empty" };
-  // Sadece rakam ve en fazla bir ondalık ayıracı (virgül ya da nokta)
-  if (!/^\d+([.,]\d+)?$/.test(trimmed)) return { error: "notNumber" };
-  const value = Number(trimmed.replace(",", "."));
+  let value;
+  if (/^\d+([.,]\d+)?$/.test(trimmed)) {
+    // Rakamlar ve en fazla bir ondalık ayıracı (virgül ya da nokta)
+    value = Number(trimmed.replace(",", "."));
+  }
+  // "3.600" ya da "3,600": ondalık okunursa 3,6 cm³ olur, bu da imkânsız;
+  // üçlü gruplar varsa ve ondalık okuma çok küçükse binlik ayıracı sayılır
+  if (/^\d{1,3}([.,]\d{3})+$/.test(trimmed) && !(value >= HARD_LIMITS.min)) {
+    value = Number(trimmed.replace(/[.,]/g, ""));
+  }
+  if (value === undefined) return { error: "notNumber" };
   if (value < HARD_LIMITS.min) return { error: "tooSmall" };
   if (value > HARD_LIMITS.max) return { error: "tooLarge" };
   return { value };
