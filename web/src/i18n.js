@@ -36,7 +36,7 @@ const MESSAGES = {
     legendYou: "Senin değerin",
     howTitle: "Nasıl çalışır",
     how1: "Model düz bir doğru: beyin ağırlığı ≈ {a} + {b} × baş hacmi. Baş hacmi 100 cm³ arttığında tahmin yaklaşık {per100} g artar.",
-    how2: "Beş farklı model aynı verinin 50 farklı bölmesinde sınandı. Daha karmaşık modeller hatayı yarım gram kadar azalttı. Bu fark ölçüm gürültüsünün içinde kaldığı için en basit model seçildi.",
+    how2: "Beş farklı model aynı verinin 50 farklı bölmesinde sınandı. Daha karmaşık modeller hatayı 1 gramdan az düşürdü. Bu fark ölçüm gürültüsünün içinde kaldığı için en basit model seçildi.",
     how3: "Tahminin ortalama hatası yaklaşık {mae} g. Aralık verinin kenarlarına doğru genişler, çünkü model orada daha az örnek görmüştür.",
     howLink: "Model karşılaştırmasına bak",
     dataTitle: "Veri ve sınırlar",
@@ -125,7 +125,7 @@ const MESSAGES = {
     legendYou: "Your value",
     howTitle: "How it works",
     how1: "The model is a straight line: brain weight ≈ {a} + {b} × head size. Each extra 100 cm³ of head size adds about {per100} g to the prediction.",
-    how2: "Five models were tested on 50 different splits of the same data. The more complex ones lowered the error by about half a gram. That is within the measurement noise, so the simplest model was chosen.",
+    how2: "Five models were tested on 50 different splits of the same data. The more complex ones lowered the error by less than 1 g. That is within the measurement noise, so the simplest model was chosen.",
     how3: "The average error of a prediction is about {mae} g. The interval widens towards the edges of the data, where the model has seen fewer examples.",
     howLink: "See the model comparison",
     dataTitle: "Data and limits",
@@ -199,7 +199,7 @@ export function formatNumber(value, digits = 0) {
   }).format(value);
 }
 
-/** data-i18n (metin), data-i18n-aria (aria-label) ve data-i18n-params (JSON) özniteliklerini doldurur. */
+/** data-i18n (metin) ve data-i18n-aria (aria-label) özniteliklerini doldurur. */
 export function applyTranslations(root = document) {
   document.documentElement.lang = lang;
   // <body data-page="model"> → modelDocTitle; anahtar yoksa hesaplayıcının başlığı
@@ -208,8 +208,7 @@ export function applyTranslations(root = document) {
   document.title = t(key("DocTitle"));
   document.querySelector('meta[name="description"]')?.setAttribute("content", t(key("DocDescription")));
   for (const element of root.querySelectorAll("[data-i18n]")) {
-    const params = element.dataset.i18nParams ? JSON.parse(element.dataset.i18nParams) : {};
-    element.textContent = t(element.dataset.i18n, params);
+    element.textContent = t(element.dataset.i18n);
   }
   for (const element of root.querySelectorAll("[data-i18n-aria]")) {
     element.setAttribute("aria-label", t(element.dataset.i18nAria));
