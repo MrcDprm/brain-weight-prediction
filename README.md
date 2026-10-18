@@ -19,8 +19,7 @@ Estimate adult brain weight from head size, with an honest error margin. A Pytho
 - Unit tests with pytest.
 
 ### Website
-- Calculator: head size (cm³), sex and age group → predicted brain weight with a 95% prediction interval.
-- Tape-measure mode: enter head length, width and height (cm); head size is computed with the Lee–Pearson formula, the same method used for the original dataset.
+- Calculator: head size (cm³) → predicted brain weight with a 95% prediction interval.
 - Input validation and an "unreliable estimate" warning outside the training range.
 - Chart: data points, regression line, prediction band and your input.
 - Model page: comparison table, residual plot and a model card (data source, limitations, intended use).
@@ -51,6 +50,7 @@ _Coming soon._
 
 ## Future Plans
 
+- Tape-measure mode (head length, width and height → head size), once the exact measurement method behind the dataset's head size values is confirmed from the original paper.
 - Batch prediction from an uploaded CSV file.
 - Additional datasets.
 - Bayesian regression for uncertainty estimates.

@@ -19,8 +19,7 @@ Baş hacminden yetişkin beyin ağırlığını, dürüst bir hata payıyla tahm
 - pytest ile birim testleri.
 
 ### Web sitesi
-- Hesaplayıcı: baş hacmi (cm³), cinsiyet ve yaş grubu → %95 tahmin aralığıyla tahmini beyin ağırlığı.
-- Mezura modu: baş uzunluğu, genişliği ve yüksekliği (cm) girilir; baş hacmi, orijinal veri setinde de kullanılan Lee–Pearson formülüyle hesaplanır.
+- Hesaplayıcı: baş hacmi (cm³) → %95 tahmin aralığıyla tahmini beyin ağırlığı.
 - Girdi doğrulama; eğitim aralığının dışında "güvenilmez tahmin" uyarısı.
 - Grafik: veri noktaları, regresyon doğrusu, tahmin bandı ve girdiğiniz değer.
 - Model sayfası: karşılaştırma tablosu, artık (residual) grafiği ve model kartı (veri kaynağı, sınırlar, kullanım amacı).
@@ -51,6 +50,7 @@ _Yakında._
 
 ## Gelecek Planları
 
+- Mezura modu (baş uzunluğu, genişliği ve yüksekliği → baş hacmi); veri setindeki baş hacmi değerlerinin hangi ölçüm yöntemiyle hesaplandığı orijinal makaleden doğrulandıktan sonra.
 - Yüklenen CSV dosyasından toplu tahmin.
 - Ek veri setleri.
 - Belirsizlik tahmini için Bayesçi regresyon.
