@@ -7,7 +7,7 @@ const M = { top: 14, right: 18, bottom: 54, left: 80 };
 const BASE_X = [2600, 4900];
 const DURATION = 320;
 
-function el(tag, attrs = {}, parent) {
+export function el(tag, attrs = {}, parent) {
   const node = document.createElementNS(SVG, tag);
   for (const [name, value] of Object.entries(attrs)) node.setAttribute(name, value);
   parent?.append(node);
@@ -15,14 +15,14 @@ function el(tag, attrs = {}, parent) {
 }
 
 // Okunur bir adım: 1, 2 ya da 5 × 10^n
-function niceStep(span, targetTicks) {
+export function niceStep(span, targetTicks) {
   const raw = span / targetTicks;
   const power = 10 ** Math.floor(Math.log10(raw));
   const factor = [1, 2, 5, 10].find((f) => f * power >= raw);
   return factor * power;
 }
 
-function range(from, to, step) {
+export function range(from, to, step) {
   const values = [];
   for (let v = Math.ceil(from / step) * step; v <= to + 1e-9; v += step) values.push(v);
   return values;

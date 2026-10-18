@@ -1,21 +1,10 @@
 // Hesaplayıcı sayfası: girdiyi doğrular, tahmini gösterir, grafiği günceller.
 import { createChart } from "./chart.js";
-import { applyTranslations, formatNumber, getLang, t, toggleLang } from "./i18n.js";
+import { formatNumber, t } from "./i18n.js";
+import { $, initPage, loadJson } from "./page.js";
 import { HARD_LIMITS, parseHeadSize, predict } from "./predict.js";
-import { currentTheme, initTheme, toggleTheme } from "./theme.js";
 
-const $ = (id) => document.getElementById(id);
 const ERROR_KEYS = { empty: "errEmpty", notNumber: "errNotNumber", tooSmall: "errTooSmall", tooLarge: "errTooLarge" };
-
-async function loadJson(name) {
-  const response = await fetch(name);
-  if (!response.ok) throw new Error(`${name}: ${response.status}`);
-  return response.json();
-}
-
-function updateThemeButton() {
-  $("theme-toggle").setAttribute("aria-label", t(currentTheme() === "dark" ? "themeToLight" : "themeToDark"));
-}
 
 function fillModelTexts(model, metrics) {
   const [a, b] = model.coefficients;
@@ -66,13 +55,8 @@ function render(model, chart) {
 }
 
 async function main() {
-  applyTranslations();
-  initTheme(updateThemeButton);
-  updateThemeButton();
-  $("theme-toggle").addEventListener("click", () => {
-    toggleTheme();
-    updateThemeButton();
-  });
+  let onLangChange = () => {};
+  initPage(() => onLangChange());
 
   let model, data, metrics;
   try {
@@ -93,16 +77,11 @@ async function main() {
   fillModelTexts(model, metrics);
   refresh();
   $("head-size").addEventListener("input", refresh);
-  $("lang-toggle").addEventListener("click", () => {
-    toggleLang();
-    applyTranslations();
-    $("lang-toggle").setAttribute("lang", getLang() === "tr" ? "en" : "tr");
-    updateThemeButton();
+  onLangChange = () => {
     fillModelTexts(model, metrics);
     chart.relabel();
     refresh();
-  });
-  $("lang-toggle").setAttribute("lang", getLang() === "tr" ? "en" : "tr");
+  };
 }
 
 main();
