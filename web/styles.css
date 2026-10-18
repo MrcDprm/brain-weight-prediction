@@ -1,0 +1,506 @@
+/* Milimetrik kâğıt ve kırmızı kalem: tek süs grafiğin ızgarası, tek vurgu kullanıcının değeri. */
+
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("fonts/source-serif-4-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("fonts/source-serif-4-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+2020, U+2113,
+    U+A720-A7FF;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url("fonts/public-sans-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url("fonts/public-sans-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+2020, U+2113,
+    U+A720-A7FF;
+}
+
+:root {
+  --paper: #f3f6f4;
+  --grid: #a9d3c4;
+  --ink: #1d2a44;
+  --blue: #3d6fb6;
+  --graphite: #5b6170;
+  --red: #c2362b;
+  --grid-minor-opacity: 0.45;
+  --band-opacity: 0.16;
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans: "Public Sans", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+/* Koyu tema: siyanotip (mavi baskı) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14202f;
+    --grid: #27405a;
+    --ink: #dce6ee;
+    --blue: #7fa8e0;
+    --graphite: #8c97a8;
+    --red: #f07a6c;
+    --grid-minor-opacity: 0.6;
+    --band-opacity: 0.2;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #14202f;
+  --grid: #27405a;
+  --ink: #dce6ee;
+  --blue: #7fa8e0;
+  --graphite: #8c97a8;
+  --red: #f07a6c;
+  --grid-minor-opacity: 0.6;
+  --band-opacity: 0.2;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-variant-numeric: lining-nums;
+}
+
+a {
+  color: var(--blue);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+h1,
+h2 {
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* Üst ve alt bilgi */
+
+.site-header,
+main,
+.site-footer {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-block: 1.1rem;
+  border-bottom: 1px solid var(--grid);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+
+.site-name {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.site-nav a {
+  color: var(--graphite);
+  text-decoration: none;
+}
+.site-nav a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.4em;
+}
+
+.text-button,
+.icon-button {
+  font: inherit;
+  color: var(--ink);
+  background: none;
+  border: 1px solid var(--grid);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.text-button {
+  padding: 0.2rem 0.6rem;
+}
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+}
+.icon-button svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.text-button:hover,
+.icon-button:hover {
+  border-color: var(--ink);
+}
+
+/* Açık temada ay (koyuya geç), koyu temada güneş (açığa geç) görünür */
+.icon-sun {
+  display: none;
+}
+:root[data-theme="dark"] .icon-sun {
+  display: inline;
+}
+:root[data-theme="dark"] .icon-moon {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icon-sun {
+    display: inline;
+  }
+  :root:not([data-theme="light"]) .icon-moon {
+    display: none;
+  }
+}
+
+.site-footer {
+  margin-top: 4rem;
+  padding-block: 1.5rem 2.5rem;
+  border-top: 1px solid var(--grid);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--graphite);
+}
+
+.footer-projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+}
+.footer-projects a {
+  color: var(--graphite);
+}
+.footer-projects a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 600;
+}
+.footer-meta {
+  margin: 0.8rem 0 0;
+}
+.footer-meta a {
+  color: var(--graphite);
+}
+
+/* Hesaplayıcı */
+
+.calculator {
+  display: grid;
+  gap: 2rem;
+  padding-top: 2.5rem;
+}
+
+@media (min-width: 60rem) {
+  .calculator {
+    grid-template-columns: 21rem 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+h1 {
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 2.75rem);
+  max-width: 14ch;
+}
+
+.intro {
+  margin: 1rem 0 2rem;
+  color: var(--graphite);
+  max-width: 34rem;
+}
+
+.field-label {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.field {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--ink);
+  max-width: 14rem;
+}
+.field:focus-within {
+  border-bottom-color: var(--red);
+}
+
+.field input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.2rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-variant-numeric: tabular-nums;
+}
+.field input:focus {
+  outline: none;
+}
+
+.unit {
+  font-family: var(--sans);
+  color: var(--graphite);
+}
+
+.hint,
+.error {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  margin: 0.45rem 0 0;
+}
+.hint {
+  color: var(--graphite);
+}
+.error {
+  color: var(--red);
+  font-weight: 600;
+}
+.error:empty {
+  display: none;
+}
+
+.result {
+  margin-top: 2.2rem;
+}
+.result p {
+  margin: 0;
+}
+.result-label {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--graphite);
+}
+.result-value {
+  font-size: clamp(3rem, 2.4rem + 2.4vw, 3.9rem);
+  font-weight: 500;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+  margin-top: 0.15rem !important;
+}
+.result-interval {
+  margin-top: 0.5rem !important;
+  color: var(--red);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.result-note {
+  margin-top: 0.3rem !important;
+  color: var(--graphite);
+  font-size: 1rem;
+}
+.warning {
+  margin-top: 1rem !important;
+  padding-left: 0.8rem;
+  border-left: 3px solid var(--red);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+
+/* Grafik */
+
+.chart {
+  margin: 0;
+  min-width: 0;
+}
+
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--sans);
+}
+
+.chart [hidden] {
+  display: none;
+}
+.chart .paper {
+  fill: var(--paper);
+}
+.chart .grid-minor {
+  stroke: var(--grid);
+  stroke-width: 0.5;
+  opacity: var(--grid-minor-opacity);
+}
+.chart .grid-major {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+.chart .band {
+  fill: var(--blue);
+  opacity: var(--band-opacity);
+}
+.chart .fit {
+  stroke: var(--blue);
+  stroke-width: 2.2;
+}
+.chart .dot {
+  fill: var(--graphite);
+  opacity: 0.75;
+}
+.chart .tick {
+  fill: var(--graphite);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.chart .axis-title {
+  fill: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+.chart .you {
+  fill: var(--red);
+  stroke: var(--paper);
+  stroke-width: 2.5;
+}
+.chart .leader {
+  stroke: var(--red);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 3;
+}
+.chart .bracket {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.3rem;
+  margin-top: 0.6rem;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--graphite);
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.swatch {
+  display: inline-block;
+  flex: none;
+}
+.swatch-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--graphite);
+}
+.swatch-fit {
+  width: 1.2rem;
+  height: 2px;
+  background: var(--blue);
+}
+.swatch-band {
+  width: 1.2rem;
+  height: 0.7rem;
+  background: color-mix(in srgb, var(--blue) 22%, transparent);
+}
+.swatch-you {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+/* Açıklamalar */
+
+.notes {
+  display: grid;
+  gap: 2rem;
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--grid);
+}
+@media (min-width: 60rem) {
+  .notes {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+.notes h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+.notes p {
+  margin: 0 0 0.9rem;
+  max-width: 36rem;
+}
+.disclaimer {
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}

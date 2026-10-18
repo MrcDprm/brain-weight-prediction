@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beyin ağırlığı tahmini: baş hacminden hesaplama</title>
+    <meta
+      name="description"
+      content="Baş hacmini yaz, tahmini beyin ağırlığını %95 tahmin aralığıyla gör. 237 yetişkinin ölçümüyle eğitilmiş, çapraz doğrulamayla seçilmiş bir model."
+    />
+    <meta name="theme-color" content="#f3f6f4" />
+    <script src="src/theme-init.js"></script>
+    <link rel="preload" href="fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="src/app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-name" href="./" data-i18n="siteName">Beyin ağırlığı tahmini</a>
+      <nav class="site-nav">
+        <a href="./" aria-current="page" data-i18n="navCalculator">Hesaplayıcı</a>
+        <a href="model.html" data-i18n="navModel">Model</a>
+        <button type="button" class="text-button" id="lang-toggle" lang="en" data-i18n="switchLang" data-i18n-aria="switchLangLabel">English</button>
+        <button type="button" class="icon-button" id="theme-toggle" aria-label="Koyu temaya geç">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="icon-moon" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" />
+            <g class="icon-sun">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" />
+            </g>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="calculator" aria-labelledby="heading">
+        <div class="calculator-panel">
+          <h1 id="heading" data-i18n="heading">Baş hacminden beyin ağırlığı tahmini</h1>
+          <p class="intro" data-i18n="intro">
+            Baş hacmini yaz. 1905'te ölçülmüş 237 yetişkinin verisiyle eğitilen model, tahmini beyin ağırlığını ve hata payını gösterir.
+          </p>
+
+          <label class="field-label" for="head-size" data-i18n="inputLabel">Baş hacmi</label>
+          <div class="field">
+            <input
+              id="head-size"
+              name="head-size"
+              type="text"
+              inputmode="decimal"
+              autocomplete="off"
+              value="3600"
+              aria-describedby="head-size-hint head-size-error"
+            />
+            <span class="unit" aria-hidden="true">cm³</span>
+          </div>
+          <p class="hint" id="head-size-hint" data-i18n="inputHint">cm³ olarak, örneğin 3600</p>
+          <p class="error" id="head-size-error" role="alert"></p>
+
+          <div class="result" aria-live="polite">
+            <p class="result-label" data-i18n="resultLabel">Tahmini beyin ağırlığı</p>
+            <p class="result-value"><span id="result-mean">–</span> g</p>
+            <p class="result-interval" id="result-interval"></p>
+            <p class="result-note" id="result-note" data-i18n="intervalNote">Bu baş hacmindeki 20 kişiden yaklaşık 19'unun beyni bu aralıkta kalır.</p>
+            <p class="warning" id="result-warning" hidden></p>
+          </div>
+        </div>
+
+        <figure class="chart">
+          <svg id="chart" role="img" data-i18n-aria="chartLabel"></svg>
+          <figcaption class="legend">
+            <span class="legend-item"><span class="swatch swatch-dot" aria-hidden="true"></span><span data-i18n="legendData">Ölçülen kişiler</span></span>
+            <span class="legend-item"><span class="swatch swatch-fit" aria-hidden="true"></span><span data-i18n="legendModel">Model</span></span>
+            <span class="legend-item"><span class="swatch swatch-band" aria-hidden="true"></span><span data-i18n="legendBand">%95 aralık</span></span>
+            <span class="legend-item"><span class="swatch swatch-you" aria-hidden="true"></span><span data-i18n="legendYou">Senin değerin</span></span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="notes">
+        <div>
+          <h2 data-i18n="howTitle">Nasıl çalışır</h2>
+          <p id="how1"></p>
+          <p data-i18n="how2">
+            Beş farklı model aynı verinin 50 farklı bölmesinde sınandı. Daha karmaşık modeller hatayı yarım gram kadar azalttı. Bu fark ölçüm gürültüsünün içinde kaldığı için en basit model seçildi.
+          </p>
+          <p id="how3"></p>
+          <p><a href="model.html" data-i18n="howLink">Model karşılaştırmasına bak</a></p>
+        </div>
+        <div>
+          <h2 data-i18n="dataTitle">Veri ve sınırlar</h2>
+          <p id="data1"></p>
+          <p data-i18n="data2">Model sadece yetişkinler için. Çocuk ve bebeklerde beyin ile baş arasındaki ilişki farklıdır.</p>
+          <p class="disclaimer" data-i18n="data3">Bu bir tıbbi araç değildir; teşhis ya da tedavi için kullanılmamalı.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav class="footer-projects" data-i18n-aria="projects" aria-label="Projelerim">
+        <a href="https://tictactoe.miracdeprem.com">Tic-Tac-Toe</a>
+        <a href="https://hangman.miracdeprem.com">Hangman</a>
+        <a href="https://quiz.miracdeprem.com">Quiz App</a>
+        <a href="https://weather.miracdeprem.com">Weather App</a>
+        <a href="https://sahaf.miracdeprem.com">Sahaf</a>
+        <a href="https://crypto.miracdeprem.com">Crypto Toolkit</a>
+        <a href="https://kvkk.miracdeprem.com">KVKK Assistant</a>
+        <a href="https://seans.miracdeprem.com">Seans</a>
+        <a href="https://spygame.miracdeprem.com">Casus</a>
+        <a href="https://zarf.miracdeprem.com">Zarf</a>
+        <a href="https://brain.miracdeprem.com" aria-current="page">Brain Weight</a>
+      </nav>
+      <p class="footer-meta">
+        <span>© 2026 Miraç Deprem</span> ·
+        <a href="https://www.miracdeprem.com" data-i18n="portfolio">Portfolyo</a> ·
+        <a href="https://github.com/MrcDprm/brain-weight-prediction" data-i18n="source">Kaynak kodu</a>
+      </p>
+    </footer>
+  </body>
+</html>

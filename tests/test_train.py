@@ -14,6 +14,10 @@ def test_pipeline_writes_both_files(tmp_path, capsys):
     assert metrics["cv"]["n_repeats"] == 1
     assert len(metrics["models"]) == 6
 
+    data = json.loads((tmp_path / "data.json").read_text(encoding="utf-8"))
+    assert len(data["points"]) == 237
+    assert all(len(point) == 2 for point in data["points"])
+
     output = capsys.readouterr().out
     assert "Selected:" in output
     assert " *" in output
