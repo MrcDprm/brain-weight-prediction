@@ -9,7 +9,7 @@ from pathlib import Path
 
 from . import __version__
 from .data import DATA_PATH, DataValidationError, load_dataset
-from .export import ExportError, fit_linear, metrics_document, write_json
+from .export import ExportError, dataset_document, fit_linear, metrics_document, write_json
 from .models import Score, compare_models, select_model
 
 WEB_DIR = Path(__file__).resolve().parent.parent / "web"
@@ -39,11 +39,12 @@ def run(data_path: Path, out_dir: Path, repeats: int) -> None:
 
     write_json(out_dir / "model.json", model)
     write_json(out_dir / "metrics.json", metrics_document(scores, chosen, reason, cv, len(df)))
+    write_json(out_dir / "data.json", dataset_document(df))
 
     print()
     print(format_table(scores, chosen))
     print(f"\nSelected: {reason}")
-    print(f"Wrote {out_dir / 'model.json'} and {out_dir / 'metrics.json'}")
+    print(f"Wrote model.json, metrics.json and data.json to {out_dir}")
 
 
 def main(argv: list[str] | None = None) -> int:

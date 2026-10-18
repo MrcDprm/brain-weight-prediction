@@ -95,6 +95,12 @@ def metrics_document(
     }
 
 
+def dataset_document(df: pd.DataFrame) -> dict:
+    """Grafikteki noktalar: [baş hacmi, beyin ağırlığı] çiftleri."""
+    points = df[["head_size", "brain_weight"]].to_numpy(dtype=float).tolist()
+    return {"schema": SCHEMA_VERSION, "dataset": "Gladstone (1905)", "points": points}
+
+
 def write_json(path: Path, data: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     text = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
