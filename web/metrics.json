@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "dataset": {
+    "name": "Gladstone (1905)",
+    "rows": 237
+  },
+  "cv": {
+    "method": "RepeatedKFold",
+    "n_splits": 10,
+    "n_repeats": 5,
+    "seed": 0
+  },
+  "selected": "linear_head",
+  "reason": "Linear (head size) is within one standard error of the best model (Ridge (head size + sex + age), MAE 56.2 g vs 56.7 g) and is simpler.",
+  "models": [
+    {
+      "name": "linear_head",
+      "label": "Linear (head size)",
+      "mae": 56.73867157135711,
+      "mae_std": 8.696774883864636,
+      "rmse": 71.77139187660943,
+      "rmse_std": 11.227098848614954,
+      "r2": 0.6023774934521744,
+      "r2_std": 0.12830290607573344,
+      "folds": 50
+    },
+    {
+      "name": "linear_full",
+      "label": "Linear (head size + sex + age)",
+      "mae": 56.24641814529531,
+      "mae_std": 8.264240358404962,
+      "rmse": 71.06971169349826,
+      "rmse_std": 11.100326364971915,
+      "r2": 0.6106780268112421,
+      "r2_std": 0.12219738982746889,
+      "folds": 50
+    },
+    {
+      "name": "poly_head",
+      "label": "Polynomial, degree 2 (head size)",
+      "mae": 56.983435014052596,
+      "mae_std": 9.035749246583261,
+      "rmse": 71.80051073173317,
+      "rmse_std": 11.494549721058037,
+      "r2": 0.6025355801401717,
+      "r2_std": 0.12690226261321666,
+      "folds": 50
+    },
+    {
+      "name": "ridge_full",
+      "label": "Ridge (head size + sex + age)",
+      "mae": 56.188051864991685,
+      "mae_std": 8.298946816636635,
+      "rmse": 71.02384108063706,
+      "rmse_std": 11.130460196646647,
+      "r2": 0.6118929891567394,
+      "r2_std": 0.11957376006465978,
+      "folds": 50
+    },
+    {
+      "name": "random_forest_full",
+      "label": "Random Forest (head size + sex + age)",
+      "mae": 59.531401365671606,
+      "mae_std": 10.097258151758801,
+      "rmse": 76.26748335170733,
+      "rmse_std": 12.495624099272517,
+      "r2": 0.5507261332253511,
+      "r2_std": 0.14939524007394242,
+      "folds": 50
+    },
+    {
+      "name": "baseline_mean",
+      "label": "Baseline (always the mean)",
+      "mae": 94.48716496277768,
+      "mae_std": 14.759597071002679,
+      "rmse": 119.21478126219331,
+      "rmse_std": 17.795072166523354,
+      "r2": -0.047815300880101844,
+      "r2_std": 0.055464204953625064,
+      "folds": 50
+    }
+  ]
+}
