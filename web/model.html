@@ -4,25 +4,39 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Model karşılaştırması: beyin ağırlığı tahmini</title>
-    <meta
-      name="description"
-      content="Beyin ağırlığı tahmini için beş regresyon modelinin tekrarlı 10 katlı çapraz doğrulamayla karşılaştırması, seçilen model ve sınırları."
-    />
+    <meta name="description" content="Beyin ağırlığı tahmini için beş regresyon modelinin tekrarlı 10 katlı çapraz doğrulamayla karşılaştırması, seçilen model ve sınırları." />
+    <link rel="canonical" href="https://brain.miracdeprem.com/model.html" />
+    <link rel="alternate" hreflang="tr" href="https://brain.miracdeprem.com/model.html" />
+    <link rel="alternate" hreflang="en" href="https://brain.miracdeprem.com/en/model.html" />
+    <link rel="alternate" hreflang="x-default" href="https://brain.miracdeprem.com/model.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Beyin ağırlığı tahmini" />
+    <meta property="og:title" content="Model karşılaştırması: beyin ağırlığı tahmini" />
+    <meta property="og:description" content="Beyin ağırlığı tahmini için beş regresyon modelinin tekrarlı 10 katlı çapraz doğrulamayla karşılaştırması, seçilen model ve sınırları." />
+    <meta property="og:url" content="https://brain.miracdeprem.com/model.html" />
+    <meta property="og:image" content="https://brain.miracdeprem.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Baş hacmi girilen hesaplayıcı, tahmini beyin ağırlığı ve milimetrik kâğıt üzerinde veri grafiği" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#f3f6f4" />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-    <script src="src/theme-init.js"></script>
-    <link rel="preload" href="fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="src/model-page.js"></script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script src="/src/theme-init.js"></script>
+    <link rel="preload" href="/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Model nasıl seçildi","url":"https://brain.miracdeprem.com/model.html","description":"Beyin ağırlığı tahmini için beş regresyon modelinin tekrarlı 10 katlı çapraz doğrulamayla karşılaştırması, seçilen model ve sınırları.","inLanguage":"tr","author":{"@type":"Person","name":"Miraç Deprem","url":"https://www.miracdeprem.com"},"isPartOf":{"@type":"WebSite","name":"Beyin ağırlığı tahmini","url":"https://brain.miracdeprem.com/"},"citation":{"@type":"ScholarlyArticle","name":"A Study of the Relations of the Brain to the Size of the Head","author":{"@type":"Person","name":"R. J. Gladstone"},"datePublished":"1905","isPartOf":{"@type":"Periodical","name":"Biometrika"}}}</script>
+    <script type="module" src="/src/model-page.js"></script>
   </head>
-  <body data-page="model">
+  <body>
     <header class="site-header">
-      <a class="site-name" href="./" data-i18n="siteName">Beyin ağırlığı tahmini</a>
+      <a class="site-name" href="/">Beyin ağırlığı tahmini</a>
       <nav class="site-nav">
-        <a href="./" data-i18n="navCalculator">Hesaplayıcı</a>
-        <a href="model.html" aria-current="page" data-i18n="navModel">Model</a>
-        <button type="button" class="text-button" id="lang-toggle" lang="en" data-i18n="switchLang" data-i18n-aria="switchLangLabel">English</button>
+        <a href="/">Hesaplayıcı</a>
+        <a href="/model.html" aria-current="page">Model</a>
+        <a class="text-button" href="/en/model.html" hreflang="en" lang="en" aria-label="Switch to English">English</a>
         <button type="button" class="icon-button" id="theme-toggle" aria-label="Koyu temaya geç">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path class="icon-moon" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" />
@@ -34,23 +48,20 @@
         </button>
       </nav>
     </header>
-
     <main class="model-page">
-      <h1 data-i18n="modelHeading">Model nasıl seçildi</h1>
-      <p class="intro" data-i18n="modelIntro">
-        Beş aday model ve her zaman ortalamayı söyleyen bir referans model aynı sınavdan geçti: veri karıştırılıp 10 parçaya bölündü, her parça bir kez test için ayrıldı ve bu 5 kez tekrarlandı. Tablodaki değerler bu 50 testin ortalaması ve standart sapması.
-      </p>
+      <h1>Model nasıl seçildi</h1>
+      <p class="intro">Beş aday model ve her zaman ortalamayı söyleyen bir referans model aynı sınavdan geçti: veri karıştırılıp 10 parçaya bölündü, her parça bir kez test için ayrıldı ve bu 5 kez tekrarlandı. Tablodaki değerler bu 50 testin ortalaması ve standart sapması.</p>
       <p class="error" id="load-error" role="alert"></p>
 
       <div class="table-scroll">
         <table class="results">
-          <caption data-i18n="tableCaption">Çapraz doğrulama sonuçları. Hata düşükse ve R² yüksekse model daha iyi.</caption>
+          <caption>Çapraz doğrulama sonuçları. Hata düşükse ve R² yüksekse model daha iyi.</caption>
           <thead>
             <tr>
-              <th scope="col" data-i18n="colModel">Model</th>
-              <th scope="col" class="num" data-i18n="colMae">Ortalama hata (g)</th>
-              <th scope="col" class="num rmse" data-i18n="colRmse">RMSE (g)</th>
-              <th scope="col" class="num" data-i18n="colR2">R²</th>
+              <th scope="col">Model</th>
+              <th scope="col" class="num">Ortalama hata (g)</th>
+              <th scope="col" class="num rmse">RMSE (g)</th>
+              <th scope="col" class="num">R²</th>
             </tr>
           </thead>
           <tbody id="results-body"></tbody>
@@ -58,29 +69,27 @@
       </div>
 
       <section class="model-section">
-        <h2 data-i18n="reasonTitle">Neden en basit model</h2>
+        <h2>Neden en basit model</h2>
         <p id="reason"></p>
-        <p data-i18n="reasonExtra">
-          Baş hacmi bilindikten sonra cinsiyet ve yaş grubu neredeyse yeni bilgi getirmiyor. Random Forest bu kadar küçük ve doğrusal bir veride ezberlemeye kayıp daha kötü sonuç verdi.
-        </p>
+        <p>Baş hacmi bilindikten sonra cinsiyet ve yaş grubu neredeyse yeni bilgi getirmiyor. Random Forest bu kadar küçük ve doğrusal bir veride ezberlemeye kayıp daha kötü sonuç verdi.</p>
       </section>
 
       <section class="model-section">
-        <h2 data-i18n="residualTitle">Artıklar</h2>
+        <h2>Artıklar</h2>
         <p id="residual-text"></p>
         <figure class="chart residual-chart">
-          <svg id="residual-chart" role="img" data-i18n-aria="residualLabel"></svg>
+          <svg id="residual-chart" role="img" aria-label="Her kişi için artık (gerçek eksi tahmin), baş hacmine göre."></svg>
         </figure>
       </section>
 
       <section class="model-section">
-        <h2 data-i18n="cardTitle">Model kartı</h2>
+        <h2>Model kartı</h2>
         <dl class="card" id="model-card"></dl>
       </section>
     </main>
 
     <footer class="site-footer">
-      <nav class="footer-projects" data-i18n-aria="projects" aria-label="Projelerim">
+      <nav class="footer-projects" aria-label="Projelerim">
         <a href="https://tictactoe.miracdeprem.com">Tic-Tac-Toe</a>
         <a href="https://hangman.miracdeprem.com">Hangman</a>
         <a href="https://quiz.miracdeprem.com">Quiz App</a>
@@ -95,8 +104,8 @@
       </nav>
       <p class="footer-meta">
         <span>© 2026 Miraç Deprem</span> ·
-        <a href="https://www.miracdeprem.com" data-i18n="portfolio">Portfolyo</a> ·
-        <a href="https://github.com/MrcDprm/brain-weight-prediction" data-i18n="source">Kaynak kodu</a>
+        <a href="https://www.miracdeprem.com">Portfolyo</a> ·
+        <a href="https://github.com/MrcDprm/brain-weight-prediction">Kaynak kodu</a>
       </p>
     </footer>
   </body>

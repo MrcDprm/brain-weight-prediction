@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="{{lang}}">
+  <head>
+{{> head}}
+    <script type="module" src="/src/model-page.js"></script>
+  </head>
+  <body>
+{{> header}}
+    <main class="model-page">
+      <h1>{{t:modelHeading}}</h1>
+      <p class="intro">{{t:modelIntro}}</p>
+      <p class="error" id="load-error" role="alert"></p>
+
+      <div class="table-scroll">
+        <table class="results">
+          <caption>{{t:tableCaption}}</caption>
+          <thead>
+            <tr>
+              <th scope="col">{{t:colModel}}</th>
+              <th scope="col" class="num">{{t:colMae}}</th>
+              <th scope="col" class="num rmse">{{t:colRmse}}</th>
+              <th scope="col" class="num">{{t:colR2}}</th>
+            </tr>
+          </thead>
+          <tbody id="results-body"></tbody>
+        </table>
+      </div>
+
+      <section class="model-section">
+        <h2>{{t:reasonTitle}}</h2>
+        <p id="reason"></p>
+        <p>{{t:reasonExtra}}</p>
+      </section>
+
+      <section class="model-section">
+        <h2>{{t:residualTitle}}</h2>
+        <p id="residual-text"></p>
+        <figure class="chart residual-chart">
+          <svg id="residual-chart" role="img" aria-label="{{t:residualLabel}}"></svg>
+        </figure>
+      </section>
+
+      <section class="model-section">
+        <h2>{{t:cardTitle}}</h2>
+        <dl class="card" id="model-card"></dl>
+      </section>
+    </main>
+
+{{> footer}}
+  </body>
+</html>

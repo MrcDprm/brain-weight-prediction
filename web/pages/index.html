@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="{{lang}}">
+  <head>
+{{> head}}
+    <script type="module" src="/src/app.js"></script>
+  </head>
+  <body>
+{{> header}}
+    <main>
+      <section class="calculator" aria-labelledby="heading">
+        <div class="calculator-panel">
+          <h1 id="heading">{{t:heading}}</h1>
+          <p class="intro">{{t:intro}}</p>
+
+          <label class="field-label" for="head-size">{{t:inputLabel}}</label>
+          <div class="field">
+            <input
+              id="head-size"
+              name="head-size"
+              type="text"
+              inputmode="decimal"
+              autocomplete="off"
+              value="3600"
+              aria-describedby="head-size-hint head-size-error"
+            />
+            <span class="unit" aria-hidden="true">cm³</span>
+          </div>
+          <p class="hint" id="head-size-hint">{{t:inputHint}}</p>
+          <p class="error" id="head-size-error" role="alert"></p>
+
+          <div class="result" aria-live="polite">
+            <p class="result-label">{{t:resultLabel}}</p>
+            <p class="result-value"><span id="result-mean">–</span> g</p>
+            <p class="result-interval" id="result-interval"></p>
+            <p class="result-note" id="result-note">{{t:intervalNote}}</p>
+            <p class="warning" id="result-warning" hidden></p>
+          </div>
+        </div>
+
+        <figure class="chart">
+          <svg id="chart" role="img" aria-label="{{t:chartLabel}}"></svg>
+          <figcaption class="legend">
+            <span class="legend-item"><span class="swatch swatch-dot" aria-hidden="true"></span><span>{{t:legendData}}</span></span>
+            <span class="legend-item"><span class="swatch swatch-fit" aria-hidden="true"></span><span>{{t:legendModel}}</span></span>
+            <span class="legend-item"><span class="swatch swatch-band" aria-hidden="true"></span><span>{{t:legendBand}}</span></span>
+            <span class="legend-item"><span class="swatch swatch-you" aria-hidden="true"></span><span>{{t:legendYou}}</span></span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="notes">
+        <div>
+          <h2>{{t:howTitle}}</h2>
+          <p id="how1"></p>
+          <p>{{t:how2}}</p>
+          <p id="how3"></p>
+          <p><a href="{{model}}">{{t:howLink}}</a></p>
+        </div>
+        <div>
+          <h2>{{t:dataTitle}}</h2>
+          <p id="data1"></p>
+          <p>{{t:data2}}</p>
+          <p class="disclaimer">{{t:data3}}</p>
+        </div>
+      </section>
+    </main>
+
+{{> footer}}
+  </body>
+</html>
