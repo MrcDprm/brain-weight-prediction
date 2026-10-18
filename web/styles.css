@@ -504,3 +504,125 @@ h1 {
     scroll-behavior: auto !important;
   }
 }
+
+/* Model sayfası */
+
+.model-page {
+  padding-top: 2.5rem;
+}
+.model-page h1 {
+  max-width: none;
+}
+.model-page > .intro {
+  max-width: 44rem;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+/* Dönemin dergi tablosu: üstte kalın, başlık altında ve en altta ince çizgi */
+.results {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.results caption {
+  caption-side: bottom;
+  text-align: left;
+  padding-top: 0.6rem;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--graphite);
+}
+.results th,
+.results td {
+  padding: 0.55rem 0.9rem 0.55rem 0;
+  text-align: left;
+  font-weight: 400;
+}
+.results thead th {
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.results .num {
+  text-align: right;
+  white-space: nowrap;
+}
+.results tbody tr + tr > * {
+  border-top: 1px solid var(--grid);
+}
+/* Telefonda RMSE sütunu gizlenir; tablo yatay kaydırmadan sığar */
+@media (max-width: 40rem) {
+  .results .rmse {
+    display: none;
+  }
+  .results {
+    font-size: 1rem;
+  }
+}
+.results .selected th {
+  font-weight: 600;
+}
+.results .selected > * {
+  color: var(--ink);
+}
+.results .baseline > * {
+  color: var(--graphite);
+  font-style: italic;
+}
+.tag {
+  margin-left: 0.4rem;
+  padding: 0 0.4rem;
+  border: 1.5px solid var(--red);
+  border-radius: 3px;
+  color: var(--red);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.model-section {
+  margin-top: 3rem;
+}
+.model-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+.model-section p {
+  max-width: 44rem;
+  margin: 0 0 0.9rem;
+}
+.residual-chart {
+  margin-top: 1.2rem;
+}
+
+.card {
+  display: grid;
+  gap: 0.3rem 2rem;
+  margin: 0;
+  max-width: 50rem;
+}
+.card dt {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.card dd {
+  margin: 0 0 0.9rem;
+}
+@media (min-width: 40rem) {
+  .card {
+    grid-template-columns: 10rem 1fr;
+  }
+  .card dt {
+    padding-top: 0.15rem;
+  }
+}

@@ -43,6 +43,50 @@ const MESSAGES = {
     data1: "Veri, R. J. Gladstone'un 1905'te Biometrika dergisinde yayımlanan çalışmasından geliyor: 237 yetişkinin kafa ölçülerinden hesaplanan baş hacmi ve beyin ağırlığı. Verideki baş hacmi {min}–{max} cm³ arasında.",
     data2: "Model sadece yetişkinler için. Çocuk ve bebeklerde beyin ile baş arasındaki ilişki farklıdır.",
     data3: "Bu bir tıbbi araç değildir; teşhis ya da tedavi için kullanılmamalı.",
+    modelDocTitle: "Model karşılaştırması: beyin ağırlığı tahmini",
+    modelDocDescription:
+      "Beyin ağırlığı tahmini için beş regresyon modelinin tekrarlı 10 katlı çapraz doğrulamayla karşılaştırması, seçilen model ve sınırları.",
+    modelHeading: "Model nasıl seçildi",
+    modelIntro:
+      "Beş aday model ve her zaman ortalamayı söyleyen bir referans model aynı sınavdan geçti: veri karıştırılıp 10 parçaya bölündü, her parça bir kez test için ayrıldı ve bu 5 kez tekrarlandı. Tablodaki değerler bu 50 testin ortalaması ve standart sapması.",
+    tableCaption: "Çapraz doğrulama sonuçları. Hata düşükse ve R² yüksekse model daha iyi.",
+    colModel: "Model",
+    colMae: "Ortalama hata (g)",
+    colRmse: "RMSE (g)",
+    colR2: "R²",
+    selectedTag: "seçildi",
+    model_linear_head: "Doğrusal (baş hacmi)",
+    model_linear_full: "Doğrusal (baş hacmi, cinsiyet, yaş)",
+    model_poly_head: "Polinom, 2. derece (baş hacmi)",
+    model_ridge_full: "Ridge (baş hacmi, cinsiyet, yaş)",
+    model_random_forest_full: "Random Forest (baş hacmi, cinsiyet, yaş)",
+    model_baseline_mean: "Referans: hep ortalamayı söyler",
+    reasonTitle: "Neden en basit model",
+    reasonSimpler:
+      "En düşük hatayı {best} verdi ({bestMae} g). Seçilen {chosen} modeli {diff} g geride. Bu fark bir standart hatanın ({se} g) içinde, yani ölçüm gürültüsünden ayırt edilemiyor. İki model bu kadar yakınken daha az parametreli olanı yeni verilerde daha güvenilirdir.",
+    reasonBest: "En düşük hatayı {chosen} verdi ({bestMae} g) ve seçildi.",
+    reasonExtra:
+      "Baş hacmi bilindikten sonra cinsiyet ve yaş grubu neredeyse yeni bilgi getirmiyor. Random Forest bu kadar küçük ve doğrusal bir veride ezberlemeye kayıp daha kötü sonuç verdi.",
+    residualTitle: "Artıklar",
+    residualText:
+      "Artık, gerçek beyin ağırlığı ile tahmin arasındaki fark. Noktalar sıfır çizgisinin iki yanına dengeli dağılıyor ve bir eğri çizmiyor; bu da düz bir doğrunun bu veri için yeterli olduğunu gösteriyor. Bant, noktaların yaklaşık %95'inin düştüğü ±{band} g aralığı.",
+    residualLabel: "Her kişi için artık (gerçek eksi tahmin), baş hacmine göre.",
+    axisResidual: "Artık (g)",
+    cardTitle: "Model kartı",
+    cardUseTerm: "Kullanım amacı",
+    cardUse: "Baş hacminden yetişkin beyin ağırlığı tahminini göstermek. Öğrenme ve gösterim amaçlı.",
+    cardDataTerm: "Veri",
+    cardData:
+      "237 yetişkin, R. J. Gladstone (1905), Biometrika IV. Baş hacmi (cm³), beyin ağırlığı (g), cinsiyet ve yaş grubu (20–46, 46+).",
+    cardMethodTerm: "Yöntem",
+    cardMethod: "En küçük kareler doğrusal regresyon. %95 tahmin aralığı t dağılımıyla hesaplanır ({dof} serbestlik derecesi).",
+    cardFormulaTerm: "Formül",
+    cardFormula: "beyin ağırlığı = {a} + {b} × baş hacmi, σ = {sigma} g",
+    cardPerfTerm: "Başarı",
+    cardPerf: "Çapraz doğrulamada ortalama hata {mae} g, R² {r2}.",
+    cardLimitsTerm: "Sınırlar",
+    cardLimits:
+      "Sadece yetişkinler için. Veri 1905'e ait ve tek bir topluluktan. {min}–{max} cm³ dışında tahmin güvenilir değil. Tıbbi bir araç değildir.",
     projects: "Projelerim",
     portfolio: "Portfolyo",
     source: "Kaynak kodu",
@@ -88,6 +132,50 @@ const MESSAGES = {
     data1: "The data comes from R. J. Gladstone's study published in Biometrika in 1905: head size calculated from head measurements, and brain weight, for 237 adults. Head size in the data ranges from {min} to {max} cm³.",
     data2: "The model is for adults only. In children and babies the relation between brain and head is different.",
     data3: "This is not a medical tool and must not be used for diagnosis or treatment.",
+    modelDocTitle: "Model comparison: brain weight prediction",
+    modelDocDescription:
+      "Five regression models for brain weight prediction compared with repeated 10-fold cross-validation, plus the chosen model and its limits.",
+    modelHeading: "How the model was chosen",
+    modelIntro:
+      "Five candidate models and a baseline that always predicts the mean took the same test: the data was shuffled and split into 10 parts, each part was held out once for testing, and this was repeated 5 times. The table shows the mean and standard deviation over these 50 tests.",
+    tableCaption: "Cross-validation results. Lower error and higher R² are better.",
+    colModel: "Model",
+    colMae: "Mean error (g)",
+    colRmse: "RMSE (g)",
+    colR2: "R²",
+    selectedTag: "chosen",
+    model_linear_head: "Linear (head size)",
+    model_linear_full: "Linear (head size, sex, age)",
+    model_poly_head: "Polynomial, degree 2 (head size)",
+    model_ridge_full: "Ridge (head size, sex, age)",
+    model_random_forest_full: "Random Forest (head size, sex, age)",
+    model_baseline_mean: "Baseline: always the mean",
+    reasonTitle: "Why the simplest model",
+    reasonSimpler:
+      "The lowest error came from {best} ({bestMae} g). The chosen {chosen} model is {diff} g behind. That gap is within one standard error ({se} g), so it cannot be told apart from measurement noise. When two models are this close, the one with fewer parameters is more reliable on new data.",
+    reasonBest: "{chosen} had the lowest error ({bestMae} g) and was chosen.",
+    reasonExtra:
+      "Once head size is known, sex and age group add almost no new information. Random Forest overfits on such a small, linear dataset and did worse.",
+    residualTitle: "Residuals",
+    residualText:
+      "A residual is the actual brain weight minus the prediction. The points spread evenly on both sides of zero and do not curve, which shows that a straight line is enough for this data. The band is the ±{band} g range where about 95% of the points fall.",
+    residualLabel: "Residual (actual minus predicted) for each person, by head size.",
+    axisResidual: "Residual (g)",
+    cardTitle: "Model card",
+    cardUseTerm: "Intended use",
+    cardUse: "Showing how adult brain weight can be predicted from head size. For learning and demonstration.",
+    cardDataTerm: "Data",
+    cardData:
+      "237 adults, R. J. Gladstone (1905), Biometrika IV. Head size (cm³), brain weight (g), sex and age group (20–46, 46+).",
+    cardMethodTerm: "Method",
+    cardMethod: "Ordinary least squares linear regression. The 95% prediction interval uses the t distribution ({dof} degrees of freedom).",
+    cardFormulaTerm: "Formula",
+    cardFormula: "brain weight = {a} + {b} × head size, σ = {sigma} g",
+    cardPerfTerm: "Performance",
+    cardPerf: "Cross-validated mean error {mae} g, R² {r2}.",
+    cardLimitsTerm: "Limits",
+    cardLimits:
+      "Adults only. The data is from 1905 and from a single population. Predictions outside {min}–{max} cm³ are not reliable. Not a medical tool.",
     projects: "My projects",
     portfolio: "Portfolio",
     source: "Source code",
@@ -114,8 +202,11 @@ export function formatNumber(value, digits = 0) {
 /** data-i18n (metin), data-i18n-aria (aria-label) ve data-i18n-params (JSON) özniteliklerini doldurur. */
 export function applyTranslations(root = document) {
   document.documentElement.lang = lang;
-  document.title = t("docTitle");
-  document.querySelector('meta[name="description"]')?.setAttribute("content", t("docDescription"));
+  // <body data-page="model"> → modelDocTitle; anahtar yoksa hesaplayıcının başlığı
+  const page = document.body.dataset.page ?? "";
+  const key = (name) => (page ? page + name : name.charAt(0).toLowerCase() + name.slice(1));
+  document.title = t(key("DocTitle"));
+  document.querySelector('meta[name="description"]')?.setAttribute("content", t(key("DocDescription")));
   for (const element of root.querySelectorAll("[data-i18n]")) {
     const params = element.dataset.i18nParams ? JSON.parse(element.dataset.i18nParams) : {};
     element.textContent = t(element.dataset.i18n, params);
