@@ -17,7 +17,7 @@ Bir beyin ağırlığı hesaplayıcısı: baş hacmini cm³ olarak yaz, tahmini 
 - Milimetrik kâğıt üzerinde grafik: verideki 237 kişi, regresyon doğrusu, aralık bandı ve senin değerin; aralık eksende bir ayraç olarak çizilir
 - Baş hacmi verideki aralığın (2.720–4.747 cm³) dışındaysa uyarı, hatalı girdide açık mesajlar ("3.600" ve "3,600" binlik olarak okunur)
 - Model sayfası: karşılaştırma tablosu, modelin neden seçildiği, artık grafiği ve model kartı (kullanım amacı, veri, yöntem, sınırlar)
-- Türkçe ve İngilizce, açık ve koyu tema, telefonda ve klavyeyle çalışır
+- Kendi adreslerinde Türkçe ve İngilizce (`/` ve `/en/`), açık ve koyu tema, telefonda ve klavyeyle çalışır
 - Sunucu yok: tahmin `model.json` ile tarayıcıda yapılır, hiçbir şey gönderilmez ya da saklanmaz
 
 **Eğitim hattı**
@@ -106,14 +106,18 @@ npm test
 python -m http.server 8000 -d web   # sonra http://localhost:8000 adresini aç
 ```
 
+HTML sayfaları, `sitemap.xml` ve `robots.txt` iki dilde `web/pages/` ve `web/src/messages.js` dosyalarından üretilir. Bir metni değiştirince `npm run build:pages` çalıştır; sayfalar güncel değilse bir test başarısız olur.
+
 ## Proje Yapısı
 
 ```
 brainweight/   veri doğrulama, model karşılaştırma, dışa aktarma, eğitim komutu
 tests/         pytest testleri
 data/          orijinal veri seti
+scripts/       build-pages.mjs: Türkçe ve İngilizce sayfaları üretir
 web/           web sitesi (Vercel bu klasörü yayınlar)
-  src/         predict.js, chart.js, app.js, model-page.js, i18n.js, theme.js
+  pages/       sayfa şablonları
+  src/         predict.js, chart.js, app.js, model-page.js, messages.js, theme.js
   tests/       JavaScript testleri ve ortak test verileri
 ```
 

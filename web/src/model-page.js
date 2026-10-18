@@ -133,8 +133,7 @@ function drawResiduals(svg, model, points) {
 }
 
 async function main() {
-  let render = () => {};
-  initPage(() => render());
+  initPage();
 
   let model, data, metrics;
   try {
@@ -145,14 +144,11 @@ async function main() {
   }
 
   const svg = $("residual-chart");
-  render = () => {
-    fillTable(metrics);
-    fillReason(metrics);
-    fillCard(model, metrics);
-    $("residual-text").textContent = t("residualText", { band: formatNumber(model.t * model.sigma) });
-    drawResiduals(svg, model, data.points);
-  };
-  render();
+  fillTable(metrics);
+  fillReason(metrics);
+  fillCard(model, metrics);
+  $("residual-text").textContent = t("residualText", { band: formatNumber(model.t * model.sigma) });
+  drawResiduals(svg, model, data.points);
 
   let width = svg.getBoundingClientRect().width;
   new ResizeObserver(() => {
