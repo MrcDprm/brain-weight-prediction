@@ -88,6 +88,7 @@ export const MESSAGES = {
     cardLimits:
       "Sadece yetişkinler için. Veri 1905'e ait ve tek bir topluluktan. {min}–{max} cm³ dışında tahmin güvenilir değil. Tıbbi bir araç değildir.",
     projects: "Projelerim",
+    otherProjects: "Diğer projelerim",
     portfolio: "Portfolyo",
     source: "Kaynak kodu",
   },
@@ -178,6 +179,7 @@ export const MESSAGES = {
     cardLimits:
       "Adults only. The data is from 1905 and from a single population. Predictions outside {min}–{max} cm³ are not reliable. Not a medical tool.",
     projects: "My projects",
+    otherProjects: "My other projects",
     portfolio: "Portfolio",
     source: "Source code",
   },
