@@ -131,13 +131,6 @@ web/           web sitesi (Vercel bu klasörü yayınlar)
 - Modeli pickle dosyası yerine düz sayılar olarak dışa aktarmak onu okunur, güvenle yüklenebilir ve JavaScript'ten kullanılabilir hâle getirdi. Ortak test verileri iki dili uyumlu tutuyor.
 - SVG grafiği elle çizmek bana ölçekleri, okunur eksen adımlarını ve yazıları telefonda okunur tutmayı öğretti.
 
-## Gelecek Planları
-
-- Mezura modu (baş uzunluğu, genişliği ve yüksekliği → baş hacmi); veri setindeki baş hacmi değerlerinin hangi ölçüm yöntemiyle hesaplandığı orijinal makaleden doğrulandıktan sonra.
-- Yüklenen CSV dosyasından toplu tahmin.
-- Ek veri setleri.
-- Belirsizlik tahmini için Bayesçi regresyon.
-
 ## Lisans
 
 [MIT](LICENSE)
