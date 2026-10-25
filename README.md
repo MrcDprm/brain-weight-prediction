@@ -131,13 +131,6 @@ web/           the website (Vercel serves this folder)
 - Exporting a model as plain numbers instead of a pickle file made it readable, safe to load and usable from JavaScript. Shared fixtures keep the two languages in step.
 - Drawing a chart in SVG by hand taught me scales, nice tick steps and how to keep text readable on phones.
 
-## Future Plans
-
-- Tape-measure mode (head length, width and height → head size), once the exact measurement method behind the dataset's head size values is confirmed from the original paper.
-- Batch prediction from an uploaded CSV file.
-- Additional datasets.
-- Bayesian regression for uncertainty estimates.
-
 ## License
 
 [MIT](LICENSE)
